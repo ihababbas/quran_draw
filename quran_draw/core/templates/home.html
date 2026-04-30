@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>نظام اختبارات القرآن</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== أساس ===== */
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+/* ===== HEADER ===== */
+.header {
+    padding: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: white;
+    color: black;
+    width: 300px;
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* ===== TITLE ===== */
+.card h2 {
+    margin-bottom: 15px;
+}
+
+/* ===== DESC ===== */
+.card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* ===== BUTTON ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #16a34a;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #15803d;
+}
+
+/* ===== ICON ===== */
+.icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+📘 نظام اختبارات القرآن الكريم
+</div>
+
+<div class="container">
+
+<!-- اختبار الأجزاء -->
+<div class="card">
+<div class="icon">📊</div>
+<h2>اختبار الأجزاء</h2>
+<p>
+اختيار عدة أجزاء ثم السحب العشوائي منها مع تحديد مواضع الاختبار
+</p>
+<a href="/multi/" class="btn">الدخول</a>
+</div>
+
+<!-- اختبار جزء واحد -->
+<div class="card">
+<div class="icon">🎯</div>
+<h2>اختبار جزء واحد</h2>
+<p>
+اختيار جزء واحد فقط وتحديد عدد المواضع داخل الجزء للاختبار
+</p>
+<a href="/single/" class="btn">الدخول</a>
+</div>
+
+</div>
+
+<div class="footer">
+© جميع الحقوق محفوظة
+</div>
+
+</body>
+</html>
