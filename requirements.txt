@@ -1,0 +1,9 @@
+Django
+gunicorn
+whitenoise
+psycopg2-binary
+
+# For development
+# ايهاب عباس
+django-debug-toolbar
+django-extensions  
