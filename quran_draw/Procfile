@@ -1,1 +1,1 @@
-web: gunicorn yourproject.wsgi
+gunicorn quran_draw.wsgi
