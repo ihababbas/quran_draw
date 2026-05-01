@@ -329,7 +329,7 @@ function drawSingle(){
         method:'POST',
         headers:{
             'Content-Type':'application/json',
-            'X-CSRFToken':document.cookie.split('csrftoken=')[1]
+            // 'X-CSRFToken':document.cookie.split('csrftoken=')[1]
         },
         body:JSON.stringify({
             name: name,
