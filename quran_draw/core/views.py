@@ -74,7 +74,7 @@ def draw(request):
 
 
 # ===== سحب جزء واحد =====
-
+@csrf_exempt
 def draw_single(request):
 
     if request.method != "POST":
