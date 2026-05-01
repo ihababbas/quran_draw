@@ -341,8 +341,38 @@ function resetSelection(){
 }
 
 /* ===== SUBMIT ===== */
-function submitData(){
+function submitData() {
 
+    let name = document.getElementById("name").value;
+    let level = parseInt(document.getElementById("level").value);
+
+    if (!name || !level) {
+        Swal.fire('خطأ','أكمل البيانات','error');
+        return;
+    }
+
+    // 🔥 التحقق من العدد بالضبط
+    if (selected.length !== level) {
+        Swal.fire(
+            'تنبيه',
+            'يجب اختيار ' + level + ' أجزاء بالضبط',
+            'warning'
+        );
+        return;
+    }
+
+    fetch('/draw/',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json',
+        },
+        body:JSON.stringify({name,level,parts:selected})
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        // نفس كود عرض النتيجة
+    });
+}
     let name = document.getElementById("name").value;
 
     if(!name || !selectedLevel || selected.length === 0){
