@@ -362,6 +362,61 @@ function downloadPDF(){
     }
     html2pdf().from(document.getElementById("printable")).save();
 }
+/* ===== الصلاة ===== */
+async function loadPrayerTimes(){
+
+    const res = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Amman&country=Jordan");
+    const data = await res.json();
+
+    const t = data.data.timings;
+    const hijriRaw = data.data.date.hijri;
+
+    const months = {
+        "1":"محرم","2":"صفر","3":"ربيع الأول","4":"ربيع الآخر",
+        "5":"جمادى الأولى","6":"جمادى الآخرة","7":"رجب",
+        "8":"شعبان","9":"رمضان","10":"شوال",
+        "11":"ذو القعدة","12":"ذو الحجة"
+    };
+
+    document.getElementById("headerHijri").innerText =
+        hijriRaw.day + " " + months[hijriRaw.month.number] + " " + hijriRaw.year;
+
+    const prayers = {
+        "الفجر": t.Fajr,
+        "الظهر": t.Dhuhr,
+        "العصر": t.Asr,
+        "المغرب": t.Maghrib,
+        "العشاء": t.Isha
+    };
+
+    let now = new Date();
+    let next=null, nextName="";
+
+    for (let name in prayers) {
+        let [h,m]=prayers[name].split(":");
+        let time=new Date();
+        time.setHours(h,m,0);
+
+        if(time>now){
+            next=time;
+            nextName=name;
+            break;
+        }
+    }
+
+    document.getElementById("headerPrayer").innerText = nextName;
+
+    setInterval(()=>{
+        let diff = next - new Date();
+        let h = Math.floor(diff/(1000*60*60));
+        let m = Math.floor((diff/(1000*60))%60);
+
+        document.getElementById("headerCountdown").innerText =
+            nextName + " - " + h + "س " + m + "د";
+    },1000);
+}
+
+loadPrayerTimes();
 
 </script>
 
