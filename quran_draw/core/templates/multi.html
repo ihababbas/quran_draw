@@ -13,7 +13,6 @@
 
 <style>
 
-/* ===== أساس ===== */
 html, body {
     height: 100%;
     margin: 0;
@@ -23,7 +22,7 @@ html, body {
     overflow: hidden;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header {
     height: 50px;
     background: #111827;
@@ -34,7 +33,7 @@ html, body {
     padding: 0 15px;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 .footer {
     height: 40px;
     background: #111827;
@@ -44,20 +43,18 @@ html, body {
     align-items: center;
 }
 
-/* ===== PAGE ===== */
+/* PAGE */
 .page {
     height: calc(100vh - 90px);
     padding: 10px;
 }
 
-/* ===== LAYOUT ===== */
 .container {
     display: flex;
     gap: 15px;
     height: 100%;
 }
 
-/* ===== CARD ===== */
 .card {
     background: white;
     border-radius: 12px;
@@ -68,12 +65,10 @@ html, body {
     overflow: hidden;
 }
 
-/* ===== TITLES ===== */
 h3, h4 {
     margin: 5px 0;
 }
 
-/* ===== INPUT ===== */
 input {
     width: 100%;
     height: 34px;
@@ -81,7 +76,7 @@ input {
     padding: 6px;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -89,7 +84,11 @@ input {
     margin-bottom: 10px;
 }
 
-.box {
+.small-grid {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.box, .level-box {
     height: 40px;
     background: #e2e8f0;
     display: flex;
@@ -99,36 +98,15 @@ input {
     cursor: pointer;
 }
 
-.selected {
+.selected, .level-active {
     background: #16a34a;
     color: white;
 }
 
-/* ===== LEVEL GRID ===== */
-.small-grid {
-    grid-template-columns: repeat(6, 1fr);
-}
-
-.level-box {
-    height: 35px;
-    background: #e2e8f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.level-active {
-    background: #16a34a;
-    color: white;
-}
-
-/* ===== BUTTONS ===== */
+/* BUTTONS */
 .buttons {
     display: flex;
     gap: 5px;
-    margin-top: 8px;
 }
 
 button {
@@ -141,17 +119,14 @@ button {
 
 .submit { background: green; color: white; }
 .reset { background: red; color: white; }
+.print-btn { background: blue; color: white; }
+.pdf-btn { background: purple; color: white; }
 
-.print-btn { background: blue; color: white; margin-top: 5px;}
-.pdf-btn { background: purple; color: white; margin-top: 5px; }
-
-/* ===== RESULT ===== */
 #resultSection {
     flex: 1;
     overflow-y: auto;
 }
 
-/* ===== TABLE ===== */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -164,7 +139,6 @@ th, td {
     text-align: center;
 }
 
-/* ===== PRINT ===== */
 #printable {
     width: 210mm;
     min-height: 297mm;
@@ -174,32 +148,14 @@ th, td {
 
 @media print {
     body * { visibility: hidden; }
-
-    #printable, #printable * {
-        visibility: visible;
-    }
-
-    #printable {
-        position: absolute;
-        top: 0;
-        width: 210mm;
-    }
+    #printable, #printable * { visibility: visible; }
+    #printable { position: absolute; top: 0; width: 210mm; }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-
-    html, body {
-        overflow: auto;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
-    .page {
-        height: auto;
-    }
+@media (max-width:768px){
+    html, body { overflow:auto; }
+    .container { flex-direction:column; }
+    .page { height:auto; }
 }
 
 </style>
@@ -207,7 +163,6 @@ th, td {
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
     <span id="headerHijri">📅 ...</span>
     <span id="headerCountdown">⏳ ...</span>
@@ -241,20 +196,19 @@ th, td {
 <div class="card">
 
 <h3>النتيجة</h3>
-    <div class="result-actions">
-        <button class="print-btn" onclick="printResult()">🖨️ طباعة</button>
-        <button class="pdf-btn" onclick="downloadPDF()">📄 PDF</button>
-    </div>
+
+<div class="buttons">
+<button class="print-btn" onclick="printResult()">🖨️ طباعة</button>
+<button class="pdf-btn" onclick="downloadPDF()">📄 PDF</button>
+</div>
+
 <div id="resultSection">لا يوجد بيانات بعد</div>
 
-
-
 </div>
 
 </div>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 © نظام سحب الأجزاء
 </div>
@@ -266,63 +220,58 @@ let selected = [];
 let selectedLevel = null;
 let lastResult = null;
 
-/* ===== LEVEL GRID ===== */
-const levelGrid = document.getElementById("levelGrid");
-
-[5,10,15,20,25,30].forEach(l => {
+/* ===== LEVELS ===== */
+[5,10,15,20,25,30].forEach(l=>{
     let div = document.createElement("div");
     div.className = "level-box";
     div.innerText = l;
 
-    div.onclick = () => {
+    div.onclick = ()=>{
+        selectedLevel = l;
+
         document.querySelectorAll(".level-box").forEach(b=>b.classList.remove("level-active"));
         div.classList.add("level-active");
-        selectedLevel = l;
+
+        // reset parts
+        selected = [];
+        document.querySelectorAll(".box").forEach(b=>b.classList.remove("selected"));
+
+        // auto select all
+        if(l === 30){
+            selected = Array.from({length:30},(_,i)=>i+1);
+            document.querySelectorAll(".box").forEach(b=>b.classList.add("selected"));
+        }
     };
 
     levelGrid.appendChild(div);
 });
 
-/* ===== PARTS GRID ===== */
-const grid = document.getElementById("grid");
-
-for (let i = 1; i <= 30; i++) {
+/* ===== PARTS ===== */
+for(let i=1;i<=30;i++){
     let div = document.createElement("div");
-    div.classList.add("box");
+    div.className = "box";
     div.innerText = i;
 
-    div.onclick = function () {
-
-    if (!selectedLevel) {
-        Swal.fire('تنبيه','اختر المستوى أولاً','warning');
-        return;
-    }
-
-    // 🔥 إذا المستوى 30 → اختيار الكل تلقائي
-    if (selectedLevel === 30) {
-
-        selected = Array.from({length:30}, (_,i)=>i+1);
-
-        document.querySelectorAll(".box").forEach(b=>{
-            b.classList.add("selected");
-        });
-
-        return;
-    }
-
-    // الوضع الطبيعي
-    if (selected.includes(i)) {
-        selected = selected.filter(x => x !== i);
-        div.classList.remove("selected");
-    } else {
-        if (selected.length >= selectedLevel) {
-            Swal.fire('تنبيه','الحد '+selectedLevel,'info');
+    div.onclick = ()=>{
+        if(!selectedLevel){
+            Swal.fire('تنبيه','اختر المستوى أولاً','warning');
             return;
         }
-        selected.push(i);
-        div.classList.add("selected");
-    }
-};
+
+        if(selectedLevel === 30) return;
+
+        if(selected.includes(i)){
+            selected = selected.filter(x=>x!==i);
+            div.classList.remove("selected");
+        }else{
+            if(selected.length >= selectedLevel){
+                Swal.fire('تنبيه','الحد '+selectedLevel,'info');
+                return;
+            }
+            selected.push(i);
+            div.classList.add("selected");
+        }
+    };
 
     grid.appendChild(div);
 }
@@ -341,51 +290,23 @@ function resetSelection(){
 }
 
 /* ===== SUBMIT ===== */
-function submitData() {
+function submitData(){
 
     let name = document.getElementById("name").value;
-    let level = parseInt(document.getElementById("level").value);
 
-    if (!name || !level) {
+    if(!name || !selectedLevel){
         Swal.fire('خطأ','أكمل البيانات','error');
         return;
     }
 
-    // 🔥 التحقق من العدد بالضبط
-    if (selected.length !== level) {
-        Swal.fire(
-            'تنبيه',
-            'يجب اختيار ' + level + ' أجزاء بالضبط',
-            'warning'
-        );
+    if(selected.length !== selectedLevel){
+        Swal.fire('تنبيه','يجب اختيار '+selectedLevel,'warning');
         return;
     }
 
     fetch('/draw/',{
         method:'POST',
-        headers:{
-            'Content-Type':'application/json',
-        },
-        body:JSON.stringify({name,level,parts:selected})
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        // نفس كود عرض النتيجة
-    });
-}
-    let name = document.getElementById("name").value;
-
-    if(!name || !selectedLevel || selected.length === 0){
-        Swal.fire('خطأ','أكمل البيانات','error');
-        return;
-    }
-
-    fetch('/draw/',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/json',
-            // 'X-CSRFToken':document.cookie.split('csrftoken=')[1]
-        },
+        headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
             name:name,
             level:selectedLevel,
@@ -441,62 +362,6 @@ function downloadPDF(){
     }
     html2pdf().from(document.getElementById("printable")).save();
 }
-
-/* ===== الصلاة ===== */
-async function loadPrayerTimes(){
-
-    const res = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Amman&country=Jordan");
-    const data = await res.json();
-
-    const t = data.data.timings;
-    const hijriRaw = data.data.date.hijri;
-
-    const months = {
-        "1":"محرم","2":"صفر","3":"ربيع الأول","4":"ربيع الآخر",
-        "5":"جمادى الأولى","6":"جمادى الآخرة","7":"رجب",
-        "8":"شعبان","9":"رمضان","10":"شوال",
-        "11":"ذو القعدة","12":"ذو الحجة"
-    };
-
-    document.getElementById("headerHijri").innerText =
-        hijriRaw.day + " " + months[hijriRaw.month.number] + " " + hijriRaw.year;
-
-    const prayers = {
-        "الفجر": t.Fajr,
-        "الظهر": t.Dhuhr,
-        "العصر": t.Asr,
-        "المغرب": t.Maghrib,
-        "العشاء": t.Isha
-    };
-
-    let now = new Date();
-    let next=null, nextName="";
-
-    for (let name in prayers) {
-        let [h,m]=prayers[name].split(":");
-        let time=new Date();
-        time.setHours(h,m,0);
-
-        if(time>now){
-            next=time;
-            nextName=name;
-            break;
-        }
-    }
-
-    document.getElementById("headerPrayer").innerText = nextName;
-
-    setInterval(()=>{
-        let diff = next - new Date();
-        let h = Math.floor(diff/(1000*60*60));
-        let m = Math.floor((diff/(1000*60))%60);
-
-        document.getElementById("headerCountdown").innerText =
-            nextName + " - " + h + "س " + m + "د";
-    },1000);
-}
-
-loadPrayerTimes();
 
 </script>
 
