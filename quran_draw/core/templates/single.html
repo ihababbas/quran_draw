@@ -106,7 +106,7 @@ input {
 
 /* ===== GRID SMALL ===== */
 .small-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .small-box {
@@ -288,7 +288,7 @@ for(let i=1;i<=30;i++){
 /* ===== شبكة المواضع ===== */
 const countGrid = document.getElementById("countGrid");
 
-[4,5,6,7,8].forEach(n=>{
+[1,2,3,4,5,6,7,8].forEach(n=>{
     let div = document.createElement("div");
     div.className = "small-box";
     div.innerText = n;
