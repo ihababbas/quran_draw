@@ -166,10 +166,12 @@ th, td {
 
 /* ===== PRINT ===== */
 #printable {
-    width: 210mm;
-    min-height: 297mm;
+    width: 190mm;
+    min-height: 277mm;
     padding: 10mm;
+    margin: auto; /* 🔥 هذا أهم سطر */
     background: white;
+    box-sizing: border-box;
 }
 
 @media print {
@@ -200,7 +202,10 @@ th, td {
         height: auto;
     }
 }
-
+@page {
+    size: A4;
+    margin: 0;
+}
 </style>
 </head>
 
@@ -384,11 +389,23 @@ function printResult(){
 
 /* ===== PDF ===== */
 function downloadPDF(){
+
     if(!lastResult){
         Swal.fire('تنبيه','قم بالسحب أولاً','warning');
         return;
     }
-    html2pdf().from(document.getElementById("printable")).save();
+
+    const element = document.getElementById("printable");
+
+    const opt = {
+        margin:       0,
+        filename:     'exam.pdf',
+        image:        { type: 'jpeg', quality: 1 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save();
 }
 
 /* ===== الصلاة ===== */
