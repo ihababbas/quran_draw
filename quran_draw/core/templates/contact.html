@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+تواصل معنا | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-page">
+
+    <div class="container">
+
+        <!-- =======================
+                PAGE TITLE
+        ======================== -->
+
+        <div class="section-title">
+
+            <h1>
+
+                تواصل معنا
+
+            </h1>
+
+            <p>
+
+                يسعدنا استقبال استفساراتكم واقتراحاتكم، وسنقوم بالرد عليكم في أقرب وقت.
+
+            </p>
+
+        </div>
+
+        <!-- =======================
+                CONTACT CARD
+        ======================== -->
+
+        <div class="contact-wrapper">
+
+            <!-- =======================
+                    IMAGE
+            ======================== -->
+
+            <div class="contact-image">
+
+                <img
+
+                    src="{% static 'images/quran-banner.jpeg' %}"
+
+                    alt="Contact"
+
+                >
+
+            </div>
+
+            <!-- =======================
+                    FORM
+            ======================== -->
+
+            <div class="contact-form-card">
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="alert-success">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <div class="form-group">
+
+                        <label>
+
+                            الاسم الكامل
+
+                        </label>
+
+                        {{ form.name }}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+
+                            البريد الإلكتروني
+
+                        </label>
+
+                        {{ form.email }}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+
+                            الموضوع
+
+                        </label>
+
+                        {{ form.subject }}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+
+                            الرسالة
+
+                        </label>
+
+                        {{ form.message }}
+
+                    </div>
+
+                    <button
+
+                        type="submit"
+
+                        class="submit-btn"
+
+                    >
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        إرسال الرسالة
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script>
+
+document.querySelectorAll("input, textarea").forEach(field=>{
+
+    field.classList.add("form-control");
+
+});
+
+</script>
+
+{% endblock %}

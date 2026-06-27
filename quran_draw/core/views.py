@@ -1,9 +1,16 @@
 import random
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from .models import Segment
 from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib import messages
+from django.core.mail import send_mail
+
+from .forms import ContactForm
+
+
 
 # ===== الصفحات =====
 
@@ -127,3 +134,66 @@ def page_game(request):
 def surah_order_game(request):
 
     return render(request,"games/surah_order.html")
+
+
+def contact(request):
+
+    form = ContactForm()
+
+    if request.method == "POST":
+
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            subject = form.cleaned_data["subject"]
+            message = form.cleaned_data["message"]
+
+            send_mail(
+
+                subject=f"[Quran Draw] {subject}",
+
+                message=f"""
+Name:
+{name}
+
+Email:
+{email}
+
+Message:
+
+{message}
+""",
+
+                from_email=email,
+
+                recipient_list=[
+                    "ihababbas26@gmail.com"
+                ],
+
+                fail_silently=False
+
+            )
+
+            messages.success(
+                request,
+                "تم إرسال رسالتك بنجاح."
+            )
+
+            return redirect("contact")
+
+    return render(
+
+        request,
+
+        "contact.html",
+
+        {
+
+            "form":form
+
+        }
+
+    )

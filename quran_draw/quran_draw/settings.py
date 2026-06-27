@@ -122,3 +122,21 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 465
+
+EMAIL_USE_TLS = False
+
+EMAIL_USE_SSL = True
+
+
+EMAIL_HOST_USER = "ihababbas26@gmail.com"
+
+EMAIL_HOST_PASSWORD = "kiegqxvxqxnkbezy"
+
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_TIMEOUT = 20

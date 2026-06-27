@@ -1,0 +1,393 @@
+/*==================================================
+                    CONTACT PAGE
+==================================================*/
+
+:root{
+
+    --primary:#0E5C45;
+
+    --primary-dark:#084434;
+
+    --secondary:#C79A43;
+
+    --background:#F8F7F3;
+
+    --white:#FFFFFF;
+
+    --text:#222222;
+
+    --text-light:#6B7280;
+
+    --border:#E5E7EB;
+
+    --success:#22C55E;
+
+    --shadow:0 15px 40px rgba(0,0,0,.08);
+
+    --radius:22px;
+
+}
+
+.contact-page{
+
+    background:var(--background);
+
+    padding:70px 0;
+
+}
+
+/*==================================================
+                    TITLE
+==================================================*/
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:45px;
+
+}
+
+.section-title h1{
+
+    color:var(--primary);
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.section-title p{
+
+    color:var(--text-light);
+
+    font-size:18px;
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:2;
+
+}
+
+/*==================================================
+                    WRAPPER
+==================================================*/
+
+.contact-wrapper{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+
+    align-items:stretch;
+
+}
+
+/*==================================================
+                    IMAGE
+==================================================*/
+
+.contact-image{
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    background:white;
+
+    display:flex;
+
+}
+
+.contact-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+/*==================================================
+                    FORM
+==================================================*/
+
+.contact-form-card{
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+/*==================================================
+                    FORM GROUP
+==================================================*/
+
+.form-group{
+
+    margin-bottom:22px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    font-size:15px;
+
+}
+
+/*==================================================
+                    INPUTS
+==================================================*/
+
+.form-control{
+
+    width:100%;
+
+    height:52px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+    background:#fff;
+
+    font-family:"Cairo",sans-serif;
+
+}
+
+textarea.form-control{
+
+    height:170px;
+
+    padding:15px;
+
+    resize:vertical;
+
+}
+
+.form-control:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(14,92,69,.12);
+
+}
+
+.form-control::placeholder{
+
+    color:#A0AEC0;
+
+}
+
+/*==================================================
+                    BUTTON
+==================================================*/
+
+.submit-btn{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.submit-btn:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+.submit-btn i{
+
+    font-size:18px;
+
+}
+
+/*==================================================
+                    ALERT
+==================================================*/
+
+.alert-success{
+
+    background:#ECFDF5;
+
+    color:#15803D;
+
+    border:1px solid #BBF7D0;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    text-align:center;
+
+    font-weight:bold;
+
+}
+
+/*==================================================
+                    RESPONSIVE
+==================================================*/
+
+@media(max-width:992px){
+
+.contact-wrapper{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-image{
+
+height:420px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.contact-page{
+
+padding:50px 0;
+
+}
+
+.section-title h1{
+
+font-size:34px;
+
+}
+
+.section-title p{
+
+font-size:16px;
+
+}
+
+.contact-form-card{
+
+padding:25px;
+
+}
+
+.contact-image{
+
+height:320px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.section-title h1{
+
+font-size:28px;
+
+}
+
+.section-title p{
+
+font-size:15px;
+
+}
+
+.contact-form-card{
+
+padding:20px;
+
+}
+
+.contact-image{
+
+height:260px;
+
+}
+
+.form-control{
+
+height:48px;
+
+}
+
+textarea.form-control{
+
+height:140px;
+
+}
+
+.submit-btn{
+
+height:50px;
+
+font-size:16px;
+
+}
+
+}
