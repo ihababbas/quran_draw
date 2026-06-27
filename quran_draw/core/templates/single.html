@@ -1,470 +1,241 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% load static %}
 
-<title>اختبار جزء واحد</title>
+{% block title %}
+اختبار جزء واحد | قلب الحافظ
+{% endblock %}
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap" rel="stylesheet">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/single.css' %}">
+{% endblock %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+{% block content %}
+
+<section class="single-page">
+
+    <div class="container">
+
+        <!-- ==============================
+                    Page Title
+        =============================== -->
+
+        <div class="page-title">
+
+            <h1>
+
+                اختبار جزء واحد
+
+            </h1>
+
+            <p>
+
+                اختر جزءاً واحداً وحدد عدد مواضع الاختبار، ثم اضغط على زر السحب.
+
+            </p>
+
+        </div>
+
+        <!-- ==============================
+                    Layout
+        =============================== -->
+
+        <div class="single-container">
+
+            <!-- ==============================
+                    Left Card
+            =============================== -->
+
+            <div class="single-card">
+
+                <h2>
+
+                    بيانات الاختبار
+
+                </h2>
+
+                <!-- اسم الطالب -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        اسم الطالب
+
+                    </label>
+
+                    <input
+
+                        type="text"
+
+                        id="name"
+
+                        class="form-control"
+
+                        placeholder="أدخل اسم الطالب"
+
+                    >
+
+                </div>
+
+                <!-- اختيار الجزء -->
+
+                <h3 class="selection-title">
+
+                    اختر الجزء
+
+                </h3>
+
+                <div
+
+                    id="juzGrid"
+
+                    class="juz-grid"
+
+                >
+
+                </div>
+
+                <!-- عدد المواضع -->
+
+                <h3 class="selection-title">
+
+                    عدد المواضع
+
+                </h3>
+
+                <div
+
+                    id="countGrid"
+
+                    class="count-grid"
+
+                >
+
+                </div>
+
+                <!-- ملاحظة -->
+
+                <div class="info-box">
+
+                    <h4>
+
+                        ملاحظة
+
+                    </h4>
+
+                    <p>
+
+                        سيتم اختيار مواضع الاختبار عشوائياً من الجزء المحدد حسب العدد الذي تختاره.
+
+                    </p>
+
+                </div>
+
+                <!-- الأزرار -->
+
+                <div class="form-buttons">
+
+                    <button
+
+                        class="btn btn-danger"
+
+                        onclick="resetForm()"
+
+                    >
+
+                        إعادة تعيين
+
+                    </button>
+
+                    <button
+
+                        class="btn btn-primary"
+
+                        onclick="drawSingle()"
+
+                    >
+
+                        سحب الاختبار
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ==============================
+                    Right Card
+            =============================== -->
+
+            <div class="single-card">
+
+                <div class="result-header">
+
+                    <h2>
+
+                        نتيجة السحب
+
+                    </h2>
+
+                    <div class="result-actions">
+
+                        <button
+
+                            class="print-btn"
+
+                            onclick="printResult()"
+
+                        >
+
+                            🖨️ طباعة
+
+                        </button>
+
+                        <button
+
+                            class="pdf-btn"
+
+                            onclick="downloadPDF()"
+
+                        >
+
+                            📄 PDF
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="resultSection">
+
+                    <div class="empty-result">
+
+                        لم يتم إجراء أي سحب بعد
+
+                    </div>
+
+                                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<style>
+<!-- html2pdf -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-/* ===== أساس ===== */
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-    background: #f1f5f9;
-    overflow: hidden;
-}
+<!-- صفحة اختبار الجزء الواحد -->
+<script src="{% static 'js/single.js' %}"></script>
 
-/* ===== HEADER ===== */
-.header {
-    height: 50px;
-    background: #111827;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-    height: 40px;
-    background: #111827;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ===== PAGE ===== */
-.page {
-    height: calc(100vh - 90px);
-    padding: 10px;
-}
-
-/* ===== CONTAINER ===== */
-.container {
-    display: flex;
-    gap: 15px;
-    height: 100%;
-}
-
-/* ===== CARD ===== */
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 12px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-/* ===== TITLES ===== */
-h3, h4 {
-    margin: 5px 0;
-}
-
-/* ===== INPUT ===== */
-input {
-    width: 100%;
-    height: 34px;
-    margin-bottom: 10px;
-    padding: 6px;
-}
-
-/* ===== GRID ===== */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.box {
-    height: 40px;
-    background: #e2e8f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.selected {
-    background: #16a34a;
-    color: white;
-}
-
-/* ===== GRID SMALL ===== */
-.small-grid {
-    grid-template-columns: repeat(8, 1fr);
-}
-
-.small-box {
-    height: 35px;
-    background: #e2e8f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.active {
-    background: #16a34a;
-    color: white;
-}
-
-/* ===== BUTTONS ===== */
-.buttons {
-    display: flex;
-    gap: 5px;
- 
-}
-
-button {
-    flex: 1;
-    padding: 8px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.submit { background: green; color: white; }
-.reset { background: red; color: white; }
-
-.print-btn { background: blue; color: white; margin-top: 5px;}
-.pdf-btn { background: purple; color: white; margin-top: 5px; }
-
-/* ===== RESULT ===== */
-#resultSection {
-    flex: 1;
-    overflow-y: auto;
-}
-
-/* ===== TABLE ===== */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: center;
-}
-
-/* ===== PRINT ===== */
-#printable {
-    width: 190mm;
-    min-height: 277mm;
-    padding: 10mm;
-    margin: auto; /* 🔥 هذا أهم سطر */
-    background: white;
-    box-sizing: border-box;
-}
-
-@media print {
-    body * { visibility: hidden; }
-
-    #printable, #printable * {
-        visibility: visible;
-    }
-
-    #printable {
-        position: absolute;
-        top: 0;
-        width: 210mm;
-    }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-    html, body {
-        overflow: auto;
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
-    .page {
-        height: auto;
-    }
-}
-@page {
-    size: A4;
-    margin: 0;
-}
-</style>
-</head>
-
-<body>
-
-<!-- HEADER -->
-<div class="header">
-    <span id="headerHijri">📅 ...</span>
-    <span id="headerCountdown">⏳ ...</span>
-    <span id="headerPrayer">🕌 ...</span>
-</div>
-
-<div class="page">
-<div class="container">
-
-<!-- الإدخال -->
-<div class="card">
-
-<h3>اختبار جزء واحد</h3>
-
-<input type="text" id="name" placeholder="اسم الطالب">
-
-<h4>اختر الجزء</h4>
-<div class="grid" id="juzGrid"></div>
-
-<h4>عدد المواضع</h4>
-<div class="grid small-grid" id="countGrid"></div>
-
-<div class="buttons">
-<button class="reset" onclick="resetForm()">إعادة</button>
-<button class="submit" onclick="drawSingle()">سحب</button>
-</div>
-
-</div>
-
-<!-- النتيجة -->
-<div class="card">
-
-<div class="result-header">
-    <h4>النتيجة</h4>
-
-    <div class="buttons">
-        <button class="print-btn" onclick="printResult()">🖨️ طباعة</button>
-        <button class="pdf-btn" onclick="downloadPDF()">📄 PDF</button>
-    </div>
-</div>
-<div id="resultSection">لا يوجد بيانات بعد</div>
-
-
-
-</div>
-
-</div>
-</div>
-
-<!-- FOOTER -->
-<div class="footer">
-© نظام سحب الأجزاء
-</div>
-
-<script>
-
-/* ===== متغيرات ===== */
-let selectedJuz = null;
-let selectedCount = null;
-let lastResult = null;
-
-/* ===== إنشاء شبكة الأجزاء ===== */
-const juzGrid = document.getElementById("juzGrid");
-
-for(let i=1;i<=30;i++){
-    let div = document.createElement("div");
-    div.className = "box";
-    div.innerText = i;
-
-    div.onclick = () => {
-        document.querySelectorAll("#juzGrid .box").forEach(b=>b.classList.remove("selected"));
-        div.classList.add("selected");
-        selectedJuz = i;
-    };
-
-    juzGrid.appendChild(div);
-}
-
-/* ===== شبكة المواضع ===== */
-const countGrid = document.getElementById("countGrid");
-
-[1,2,3,4,5,6,7,8].forEach(n=>{
-    let div = document.createElement("div");
-    div.className = "small-box";
-    div.innerText = n;
-
-    div.onclick = () => {
-        document.querySelectorAll("#countGrid .small-box").forEach(b=>b.classList.remove("active"));
-        div.classList.add("active");
-        selectedCount = n;
-    };
-
-    countGrid.appendChild(div);
-});
-
-/* ===== RESET ===== */
-function resetForm(){
-    selectedJuz = null;
-    selectedCount = null;
-    lastResult = null;
-
-    document.getElementById("name").value="";
-    document.getElementById("resultSection").innerHTML="لا يوجد بيانات بعد";
-
-    document.querySelectorAll(".box").forEach(b=>b.classList.remove("selected"));
-    document.querySelectorAll(".small-box").forEach(b=>b.classList.remove("active"));
-}
-
-/* ===== DRAW ===== */
-function drawSingle(){
-
-    let name = document.getElementById("name").value;
-
-    if(!name || !selectedJuz || !selectedCount){
-        Swal.fire('خطأ','أكمل الاختيار','error');
-        return;
-    }
-
-    fetch('/draw-single/',{
-        method:'POST',
-        headers:{
-            'Content-Type':'application/json',
-            // 'X-CSRFToken':document.cookie.split('csrftoken=')[1]
-        },
-        body:JSON.stringify({
-            name: name,
-            juz: selectedJuz,
-            count: selectedCount
-        })
-    })
-    .then(res=>res.json())
-    .then(data=>{
-
-        if(data.error){
-            Swal.fire('خطأ',data.error,'error');
-            return;
-        }
-
-        lastResult = data;
-
-        let html = `
-        <div id="printable">
-        <h2 style="text-align:center;">نموذج اختبار</h2>
-        <hr>
-        <p><b>الاسم:</b> ${data.name}</p>
-        <p><b>الجزء:</b> ${data.juz}</p>
-
-        <table>
-        <tr><th>الجزء</th><th>السورة</th><th>الصفحة</th></tr>
-        `;
-
-        data.results.forEach(r=>{
-            html+=`
-            <tr>
-                <td>${r.juz}</td>
-                <td>${r.surah}</td>
-                <td>${r.page}</td>
-            </tr>`;
-        });
-
-        html += "</table></div>";
-
-        document.getElementById("resultSection").innerHTML = html;
-    });
-}
-
-/* ===== PRINT ===== */
-function printResult(){
-    if(!lastResult){
-        Swal.fire('تنبيه','قم بالسحب أولاً','warning');
-        return;
-    }
-    window.print();
-}
-
-/* ===== PDF ===== */
-function downloadPDF(){
-
-    if(!lastResult){
-        Swal.fire('تنبيه','قم بالسحب أولاً','warning');
-        return;
-    }
-
-    const element = document.getElementById("printable");
-
-    const opt = {
-        margin:       0,
-        filename:     'exam.pdf',
-        image:        { type: 'jpeg', quality: 1 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-
-    html2pdf().set(opt).from(element).save();
-}
-
-/* ===== الصلاة ===== */
-async function loadPrayerTimes(){
-
-    const res = await fetch("https://api.aladhan.com/v1/timingsByCity?city=Amman&country=Jordan");
-    const data = await res.json();
-
-    const t = data.data.timings;
-    const hijriRaw = data.data.date.hijri;
-
-    const months = {
-        "1":"محرم","2":"صفر","3":"ربيع الأول","4":"ربيع الآخر",
-        "5":"جمادى الأولى","6":"جمادى الآخرة","7":"رجب",
-        "8":"شعبان","9":"رمضان","10":"شوال",
-        "11":"ذو القعدة","12":"ذو الحجة"
-    };
-
-    document.getElementById("headerHijri").innerText =
-        hijriRaw.day + " " + months[hijriRaw.month.number] + " " + hijriRaw.year;
-
-    const prayers = {
-        "الفجر": t.Fajr,
-        "الظهر": t.Dhuhr,
-        "العصر": t.Asr,
-        "المغرب": t.Maghrib,
-        "العشاء": t.Isha
-    };
-
-    let now = new Date();
-    let next=null, nextName="";
-
-    for (let name in prayers) {
-        let [h,m]=prayers[name].split(":");
-        let time=new Date();
-        time.setHours(h,m,0);
-
-        if(time>now){
-            next=time;
-            nextName=name;
-            break;
-        }
-    }
-
-    document.getElementById("headerPrayer").innerText = nextName;
-
-    setInterval(()=>{
-        let diff = next - new Date();
-        let h = Math.floor(diff/(1000*60*60));
-        let m = Math.floor((diff/(1000*60))%60);
-
-        document.getElementById("headerCountdown").innerText =
-            nextName + " - " + h + "س " + m + "د";
-    },1000);
-}
-
-loadPrayerTimes();
-
-</script>
-
-</body>
-</html>
+{% endblock %}

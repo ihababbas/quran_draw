@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{% block title %}قلب الحافظ{% endblock %}</title>
+
+
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/single.css' %}">
+<link rel="stylesheet" href="{% static 'css/multi.css' %}">
+
+
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+{% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+{% include 'includes/topbar.html' %}
+
+{% include 'includes/navbar.html' %}
+
+{% block content %}
+
+{% endblock %}
+
+{% include 'includes/footer.html' %}
+
+<script src="{% static 'js/home.js' %}"></script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+لعبة الذاكرة | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/memory.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="memory-page">
+
+    <div class="container">
+
+        <div class="page-header">
+
+            <h1>
+                <i class="fa-solid fa-brain"></i>
+                لعبة الذاكرة - سور القرآن الكريم
+            </h1>
+
+            <p>
+                اعثر على الأزواج المتطابقة بأقل عدد من المحاولات وفي أسرع وقت.
+            </p>
+
+        </div>
+
+        <div class="memory-stats">
+
+            <div class="stat-box">
+                <span class="label">الوقت</span>
+                <span id="timer" class="value">00:00</span>
+            </div>
+
+            <div class="stat-box">
+                <span class="label">المحاولات</span>
+                <span id="attempts" class="value">0</span>
+            </div>
+
+            <div class="stat-box">
+                <span class="label">المتبقي</span>
+                <span id="remaining" class="value">8</span>
+            </div>
+
+        </div>
+
+        <div id="grid" class="memory-grid"></div>
+
+        <p id="msg" class="game-message"></p>
+
+        <div class="game-actions">
+
+            <button class="btn-primary" onclick="initGame()">
+
+                <i class="fa-solid fa-rotate-right"></i>
+
+                لعبة جديدة
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/memory.js' %}"></script>
+{% endblock %}

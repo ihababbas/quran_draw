@@ -1,0 +1,69 @@
+{% load static %}
+
+<header class="main-header">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+    <div class="container">
+
+        <!-- الشعار -->
+        <div class="header-logo">
+
+            <a href="/" class="logo-link">
+
+                <!-- <img src="{% static 'images/logo.png' %}" alt="قلب الحافظ"> -->
+
+                <div class="header-logo-text">
+
+                    <h2>قلب الحافظ</h2>
+
+                    <span>Quran Memorization Platform</span>
+
+                </div>
+
+            </a>
+
+        </div>
+
+        <!-- القائمة -->
+
+        <nav>
+
+            <ul class="nav-menu" id="navMenu">
+
+                <li><a href="/">الرئيسية</a></li>
+
+                <!-- <li><a href="/multi/">اختبار الأجزاء</a></li>
+
+                <li><a href="/single/">اختبار جزء واحد</a></li> -->
+
+                <li><a href="/about/">من نحن</a></li>
+
+                <li><a href="/contact/">تواصل معنا</a></li>
+
+            </ul>
+
+        </nav>
+
+        <!-- زر البداية -->
+
+        <div class="header-actions">
+
+            <a href="/multi/" class="start-btn">
+
+                ابدأ الاختبار
+
+            </a>
+
+        </div>
+
+        <!-- زر القائمة للموبايل -->
+
+        <button class="menu-toggle" id="menuToggle">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>

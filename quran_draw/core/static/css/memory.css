@@ -1,0 +1,421 @@
+/*=========================================
+                MEMORY GAME
+=========================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.memory-page{
+
+    background:#F8F7F3;
+
+    min-height:100vh;
+
+    padding:60px 0;
+
+}
+
+/*=========================================
+            PAGE HEADER
+=========================================*/
+
+.page-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.page-header h1{
+
+    color:#0E5C45;
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.page-header p{
+
+    color:#666;
+
+    font-size:18px;
+
+}
+
+/*=========================================
+                STATS
+=========================================*/
+
+.memory-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+    flex-wrap:wrap;
+
+}
+
+.stat-box{
+
+    background:white;
+
+    width:170px;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    border-top:4px solid #C79A43;
+
+}
+
+.label{
+
+    display:block;
+
+    color:#777;
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+}
+
+.value{
+
+    color:#0E5C45;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+}
+
+/*=========================================
+                GRID
+=========================================*/
+
+.memory-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,120px);
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin:40px auto;
+
+}
+
+/*=========================================
+                CARD
+=========================================*/
+
+.card{
+
+    width:120px;
+
+    height:120px;
+
+    perspective:1000px;
+
+    cursor:pointer;
+
+}
+
+.card-inner{
+
+    width:100%;
+
+    height:100%;
+
+    position:relative;
+
+    transition:.45s;
+
+    transform-style:preserve-3d;
+
+}
+
+.card.flipped .card-inner{
+
+    transform:rotateY(180deg);
+
+}
+
+.card-face{
+
+    position:absolute;
+
+    width:100%;
+
+    height:100%;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:10px;
+
+    backface-visibility:hidden;
+
+    font-weight:bold;
+
+}
+
+/*=========================================
+            CARD BACK
+=========================================*/
+
+.card-back{
+
+    background:#0E5C45;
+
+    color:white;
+
+    font-size:40px;
+
+}
+
+/*=========================================
+            CARD FRONT
+=========================================*/
+
+.card-front{
+
+    transform:rotateY(180deg);
+
+    background:white;
+
+    color:#0E5C45;
+
+    border:3px solid #C79A43;
+
+    font-size:18px;
+
+    line-height:1.5;
+
+}
+
+/*=========================================
+            MATCHED
+=========================================*/
+
+.card.matched .card-front{
+
+    background:#EAF7EF;
+
+    border-color:#28a745;
+
+    color:#28a745;
+
+}
+
+/*=========================================
+            BUTTON
+=========================================*/
+
+.game-actions{
+
+    text-align:center;
+
+    margin-top:35px;
+
+}
+
+.btn-primary{
+
+    background:#0E5C45;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 35px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+.btn-primary:hover{
+
+    background:#C79A43;
+
+}
+
+/*=========================================
+            MESSAGE
+=========================================*/
+
+.game-message{
+
+    text-align:center;
+
+    color:#0E5C45;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    min-height:40px;
+
+}
+
+/*=========================================
+            ANIMATIONS
+=========================================*/
+
+.card.matched{
+
+    animation:matchPop .35s;
+
+}
+
+@keyframes matchPop{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+.memory-grid{
+
+grid-template-columns:repeat(4,80px);
+
+gap:12px;
+
+}
+
+.card{
+
+width:80px;
+
+height:80px;
+
+}
+
+.card-back{
+
+font-size:28px;
+
+}
+
+.card-front{
+
+font-size:13px;
+
+padding:5px;
+
+}
+
+.page-header h1{
+
+font-size:30px;
+
+}
+
+.stat-box{
+
+width:130px;
+
+padding:15px;
+
+}
+
+.value{
+
+font-size:24px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.memory-grid{
+
+grid-template-columns:repeat(4,65px);
+
+gap:8px;
+
+}
+
+.card{
+
+width:65px;
+
+height:65px;
+
+}
+
+.card-back{
+
+font-size:22px;
+
+}
+
+.card-front{
+
+font-size:11px;
+
+}
+
+.page-header h1{
+
+font-size:24px;
+
+}
+
+}

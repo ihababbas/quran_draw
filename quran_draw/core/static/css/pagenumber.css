@@ -1,0 +1,349 @@
+/*==================================================
+                    PAGE CHALLENGE
+==================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+.challenge-page{
+
+    background:#F8F7F3;
+
+    min-height:100vh;
+
+    padding:60px 0;
+
+}
+
+/*==================================================
+                    CARD
+==================================================*/
+
+.challenge-card{
+
+    width:100%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    text-align:center;
+
+}
+
+/*==================================================
+                    TITLE
+==================================================*/
+
+.challenge-card h1{
+
+    color:#0E5C45;
+
+    font-size:38px;
+
+    margin-bottom:12px;
+
+}
+
+.challenge-card p{
+
+    color:#666;
+
+    font-size:17px;
+
+    margin-bottom:35px;
+
+}
+
+/*==================================================
+                    PAGE NUMBER
+==================================================*/
+
+#num{
+
+    font-size:90px;
+
+    font-weight:bold;
+
+    color:#C79A43;
+
+    margin-bottom:35px;
+
+    animation:fadePop .5s;
+
+}
+
+@keyframes fadePop{
+
+0%{
+
+opacity:0;
+
+transform:scale(.6);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/*==================================================
+                    INPUTS
+==================================================*/
+
+.input-group{
+
+    margin-bottom:20px;
+
+    text-align:right;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#0E5C45;
+
+    font-weight:bold;
+
+}
+
+input{
+
+    width:100%;
+
+    height:52px;
+
+    border:2px solid #E5E7EB;
+
+    border-radius:12px;
+
+    padding:0 15px;
+
+    font-size:17px;
+
+    font-family:'Cairo',sans-serif;
+
+    transition:.3s;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#0E5C45;
+
+    box-shadow:0 0 0 4px rgba(14,92,69,.12);
+
+}
+
+input::placeholder{
+
+    color:#9CA3AF;
+
+}
+
+/*==================================================
+                    BUTTONS
+==================================================*/
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.buttons button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:52px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.btn-check{
+
+    background:#0E5C45;
+
+    color:white;
+
+}
+
+.btn-check:hover{
+
+    background:#0A4736;
+
+}
+
+.btn-next{
+
+    background:#C79A43;
+
+    color:white;
+
+}
+
+.btn-next:hover{
+
+    background:#B7862F;
+
+}
+
+/*==================================================
+                    RESULT
+==================================================*/
+
+.result{
+
+    margin-top:30px;
+
+    min-height:70px;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    line-height:1.8;
+
+}
+
+.correct{
+
+    background:#EAF7EF;
+
+    color:#28A745;
+
+    border:2px solid #28A745;
+
+}
+
+.wrong{
+
+    background:#FFF1F1;
+
+    color:#DC3545;
+
+    border:2px solid #DC3545;
+
+    animation:shake .35s;
+
+}
+
+@keyframes shake{
+
+0%{transform:translateX(0);}
+
+25%{transform:translateX(-6px);}
+
+50%{transform:translateX(6px);}
+
+75%{transform:translateX(-4px);}
+
+100%{transform:translateX(0);}
+
+}
+
+/*==================================================
+                    RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+.challenge-card{
+
+padding:25px;
+
+}
+
+.challenge-card h1{
+
+font-size:30px;
+
+}
+
+#num{
+
+font-size:70px;
+
+}
+
+.buttons{
+
+flex-direction:column;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.challenge-card{
+
+padding:20px;
+
+}
+
+.challenge-card h1{
+
+font-size:24px;
+
+}
+
+#num{
+
+font-size:56px;
+
+}
+
+.result{
+
+font-size:17px;
+
+}
+
+}

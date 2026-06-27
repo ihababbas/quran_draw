@@ -1,145 +1,142 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends 'base.html' %}
+{% load static %}
 
-<title>نظام اختبارات القرآن</title>
+{% block title %}
+قلب الحافظ
+{% endblock %}
 
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+{% block content %}
 
-<style>
+<section class="hero">
 
-/* ===== أساس ===== */
-body {
-    margin: 0;
-    font-family: 'Cairo', sans-serif;
-    direction: rtl;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
-}
+    <div class="container">
 
-/* ===== HEADER ===== */
-.header {
-    padding: 20px;
-    text-align: center;
-    font-size: 26px;
-    font-weight: bold;
-}
+        <!-- عنوان الصفحة -->
 
-/* ===== CONTAINER ===== */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    gap: 30px;
-    flex-wrap: wrap;
-}
+        <div class="hero-title">
 
-/* ===== CARD ===== */
-.card {
-    background: white;
-    color: black;
-    width: 300px;
-    border-radius: 16px;
-    padding: 25px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    transition: 0.3s;
-}
+            <h1>  اختر نوع الاختبار أو اللعبة التي ترغب باستخدامها </h1>
 
-.card:hover {
-    transform: translateY(-10px);
-}
+            <p>
+                
+            </p>
 
-/* ===== TITLE ===== */
-.card h2 {
-    margin-bottom: 15px;
-}
+        </div>
 
-/* ===== DESC ===== */
-.card p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 20px;
-}
+        <!-- البطاقات -->
 
-/* ===== BUTTON ===== */
-.btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background: #16a34a;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        <div class="services-grid">
 
-.btn:hover {
-    background: #15803d;
-}
+            <!-- اختبار جزء واحد -->
 
-/* ===== ICON ===== */
-.icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
+            <a href="/single/" class="service-card">
 
-/* ===== FOOTER ===== */
-.footer {
-    text-align: center;
-    padding: 10px;
-    font-size: 13px;
-    opacity: 0.7;
-}
+                <div class="card-icon">
+                    🎯
+                </div>
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-    }
-}
+                <h3>اختبار جزء واحد</h3>
 
-</style>
-</head>
+                <p>
+                    اختيار جزء واحد وتحديد عدد المواضع داخل الجزء للاختبار.
+                </p>
 
-<body>
+                <span class="card-btn">
+                    الدخول
+                </span>
 
-<div class="header">
-📘 نظام اختبارات القرآن الكريم
-</div>
+            </a>
 
-<div class="container">
+            <!-- اختبار الأجزاء -->
 
-<!-- اختبار الأجزاء -->
-<div class="card">
-<div class="icon">📊</div>
-<h2>اختبار الأجزاء</h2>
-<p>
-اختيار عدة أجزاء ثم السحب العشوائي منها مع تحديد مواضع الاختبار
-</p>
-<a href="/multi/" class="btn">الدخول</a>
-</div>
+            <a href="/multi/" class="service-card">
 
-<!-- اختبار جزء واحد -->
-<div class="card">
-<div class="icon">🎯</div>
-<h2>اختبار جزء واحد</h2>
-<p>
-اختيار جزء واحد فقط وتحديد عدد المواضع داخل الجزء للاختبار
-</p>
-<a href="/single/" class="btn">الدخول</a>
-</div>
+                <div class="card-icon">
+                    📊
+                </div>
 
-</div>
+                <h3>اختبار الأجزاء</h3>
 
-<div class="footer">
-© جميع الحقوق محفوظة
-</div>
+                <p>
+                    اختيار عدة أجزاء ثم السحب العشوائي منها مع تحديد مواضع الاختبار.
+                </p>
 
-</body>
-</html>
+                <span class="card-btn">
+                    الدخول
+                </span>
+
+            </a>
+           <a href="/games/memory/" class="service-card">
+
+    <div class="card-icon">
+
+        <i class="fa-solid fa-brain"></i>
+
+    </div>
+
+    <h3>
+
+        لعبة الذاكرة
+
+    </h3>
+
+    <p>
+
+        طابق أسماء سور القرآن الكريم بأقل عدد من المحاولات وفي أسرع وقت.
+
+    </p>
+
+    <span class="card-btn">
+
+        ابدأ اللعب
+
+    </span>
+
+</a>
+            <!-- لعبة ترتيب السور -->
+
+            <a href="#" class="service-card disabled">
+
+                <div class="card-icon">
+                    🧩
+                </div>
+
+                <h3>لعبة ترتيب السور</h3>
+
+                <p>
+                    لعبة تفاعلية تساعد على حفظ وترتيب سور القرآن الكريم.
+                </p>
+
+                <span class="card-btn">
+                    قريباً
+                </span>
+
+            </a>
+
+            <!-- لعبة ترتيب الآيات -->
+
+            <a href="/games/pagenumber/" class="service-card">
+
+                <div class="card-icon">
+                    📖
+                </div>
+
+                <h3>لعبة رقم الصفحة </h3>
+
+                <p>
+                    تدريب تفاعلي لتثبيت الحفظ ومراجعة الصفحات.
+                </p>
+
+                <span class="card-btn">
+                    يتم عرض رقم الصفحة وعليك معرفة الجزء والسورة التي تبدأ فيها هذه الصفحة.
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -114,3 +114,12 @@ def draw_single(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)})
+    
+def memory_game(request):
+
+    return render(request,"games/memory.html")
+
+
+def page_game(request):
+
+    return render(request,"games/pagenumber.html")

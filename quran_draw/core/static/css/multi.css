@@ -1,0 +1,235 @@
+/*==================================================
+                IMPORT SINGLE
+==================================================*/
+
+@import url("single.css");
+
+/*==================================================
+                LEVEL GRID
+==================================================*/
+
+.level-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:12px;
+
+    margin-bottom:30px;
+
+}
+
+.level-box{
+
+    height:52px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#F3F4F6;
+
+    border:2px solid transparent;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#374151;
+
+    transition:.3s;
+
+}
+
+.level-box:hover{
+
+    background:#E8F5F1;
+
+    border-color:#0E5C45;
+
+    transform:translateY(-3px);
+
+}
+
+.level-box.active{
+
+    background:#0E5C45;
+
+    color:white;
+
+    border-color:#C79A43;
+
+    box-shadow:0 12px 25px rgba(14,92,69,.25);
+
+}
+
+/*==================================================
+                PARTS GRID
+==================================================*/
+
+.parts-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:12px;
+
+}
+
+.parts-grid .juz-box{
+
+    height:65px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    border-radius:14px;
+
+    background:#F3F4F6;
+
+    border:2px solid transparent;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.parts-grid .juz-box:hover{
+
+    background:#E8F5F1;
+
+    border-color:#0E5C45;
+
+    transform:translateY(-3px);
+
+}
+
+.parts-grid .juz-box.active{
+
+    background:#0E5C45;
+
+    color:white;
+
+    border-color:#C79A43;
+
+    box-shadow:0 12px 25px rgba(14,92,69,.25);
+
+}
+
+.parts-grid .juz-box strong{
+
+    font-size:20px;
+
+}
+
+.parts-grid .juz-box span{
+
+    font-size:12px;
+
+    margin-top:4px;
+
+}
+
+/*==================================================
+                SELECTION INFO
+==================================================*/
+
+#selectionInfo{
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#0E5C45;
+
+}
+
+/*==================================================
+                BUTTON DISABLED
+==================================================*/
+
+#submitBtn:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    background:#9CA3AF;
+
+}
+
+/*==================================================
+                RESPONSIVE
+==================================================*/
+
+@media(max-width:992px){
+
+    .level-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .parts-grid{
+
+        grid-template-columns:repeat(5,1fr);
+
+        gap:8px;
+
+    }
+
+    .parts-grid .juz-box{
+
+        height:50px;
+
+    }
+
+    .parts-grid .juz-box strong{
+
+        font-size:15px;
+
+    }
+
+    .parts-grid .juz-box span{
+
+        display:none;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .level-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .parts-grid{
+
+        grid-template-columns:repeat(3,1fr);
+
+    }
+
+}

@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+تحدي الصفحة | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pagenumber.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="challenge-page">
+
+    <div class="container">
+
+        <div class="challenge-card">
+
+            <!-- ========================= -->
+            <!-- Title -->
+            <!-- ========================= -->
+
+            <h1>
+
+                تحدي الصفحة
+
+            </h1>
+
+            <p>
+
+                يظهر لك رقم صفحة عشوائي من المصحف،
+                حاول معرفة الجزء والسورة التي تبدأ فيها هذه الصفحة.
+
+            </p>
+
+            <!-- ========================= -->
+            <!-- Page Number -->
+            <!-- ========================= -->
+
+            <div id="num">
+
+                1
+
+            </div>
+
+            <!-- ========================= -->
+            <!-- Inputs -->
+            <!-- ========================= -->
+
+            <div class="input-group">
+
+                <label>
+
+                    رقم الجزء
+
+                </label>
+
+                <input
+
+                    type="number"
+
+                    id="juzInput"
+
+                    min="1"
+
+                    max="30"
+
+                    placeholder="أدخل رقم الجزء"
+
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    اسم السورة
+
+                </label>
+
+                <input
+
+                    type="text"
+
+                    id="surahInput"
+
+                    list="surahList"
+
+                    autocomplete="off"
+
+                    placeholder="اكتب اسم السورة"
+
+                >
+
+            </div>
+
+            <!-- قائمة السور -->
+
+            <datalist id="surahList">
+
+            </datalist>
+
+            <!-- ========================= -->
+            <!-- Buttons -->
+            <!-- ========================= -->
+
+            <div class="buttons">
+
+                <button
+
+                    class="btn-check"
+
+                    onclick="check()"
+
+                >
+
+                    تحقق من الإجابة
+
+                </button>
+
+                <button
+
+                    class="btn-next"
+
+                    onclick="next()"
+
+                >
+
+                    صفحة جديدة
+
+                </button>
+
+            </div>
+
+            <!-- ========================= -->
+            <!-- Result -->
+            <!-- ========================= -->
+
+            <div
+
+                id="result"
+
+                class="result"
+
+            >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/pagenumber.js' %}"></script>
+
+{% endblock %}
