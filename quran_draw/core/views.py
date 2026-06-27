@@ -123,3 +123,7 @@ def memory_game(request):
 def page_game(request):
 
     return render(request,"games/pagenumber.html")
+
+def surah_order_game(request):
+
+    return render(request,"games/surah_order.html")

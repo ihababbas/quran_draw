@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+لعبة ترتيب السور | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/surah_order.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="surah-order-page">
+
+    <div class="container">
+
+        <!-- =========================
+                PAGE TITLE
+        ========================== -->
+
+        <div class="page-title">
+
+            <h1>
+
+                لعبة ترتيب السور
+
+            </h1>
+
+            <p>
+
+                اسحب السور وأفلتها حتى تصبح مرتبة حسب ترتيبها في المصحف الشريف.
+
+            </p>
+
+        </div>
+
+        <!-- =========================
+                GAME CARD
+        ========================== -->
+
+        <div class="game-card">
+
+            <!-- =========================
+                    TOP BAR
+            ========================== -->
+
+            <div class="game-header">
+
+                <div class="game-info">
+
+                    <div class="info-item">
+
+                        <span class="label">
+
+                            عدد السور
+
+                        </span>
+
+                        <span id="countDisplay">
+
+                            8
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="game-controls">
+
+                    <input
+
+                        type="range"
+
+                        id="countSlider"
+
+                        min="4"
+
+                        max="14"
+
+                        value="8"
+
+                    >
+
+                    <button
+
+                        id="newGameBtn"
+
+                        class="btn btn-primary"
+
+                    >
+
+                        لعبة جديدة
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- =========================
+                    GAME AREA
+            ========================== -->
+
+            <div
+
+                id="cardsContainer"
+
+                class="cards-container"
+
+            >
+
+            </div>
+
+            <!-- =========================
+                    ACTIONS
+            ========================== -->
+
+            <div class="game-actions">
+
+                <button
+
+                    id="checkBtn"
+
+                    class="btn btn-gold"
+
+                >
+
+                    تحقق من الترتيب
+
+                </button>
+
+            </div>
+
+            <!-- =========================
+                    RESULT
+            ========================== -->
+
+            <div
+
+                id="result"
+
+                class="game-result"
+
+            >
+
+            </div>
+
+            <div
+
+                id="score"
+
+                class="game-score"
+
+            >
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/surah_order.js' %}"></script>
+
+{% endblock %}
