@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 
 from .forms import ContactForm
+from django.conf import settings
+from django.core.mail import EmailMessage
 
 
 
@@ -137,7 +139,7 @@ def surah_order_game(request):
 
 
 def contact(request):
-
+    return render(request, "contact.html")
     form = ContactForm()
 
     if request.method == "POST":
@@ -150,32 +152,6 @@ def contact(request):
             email = form.cleaned_data["email"]
             subject = form.cleaned_data["subject"]
             message = form.cleaned_data["message"]
-
-            send_mail(
-
-                subject=f"[Quran Draw] {subject}",
-
-                message=f"""
-Name:
-{name}
-
-Email:
-{email}
-
-Message:
-
-{message}
-""",
-
-                from_email=email,
-
-                recipient_list=[
-                    "ihababbas26@gmail.com"
-                ],
-
-                fail_silently=False
-
-            )
 
             messages.success(
                 request,

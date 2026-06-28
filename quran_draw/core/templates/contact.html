@@ -29,11 +29,7 @@
 
             </h1>
 
-            <p>
-
-                يسعدنا استقبال استفساراتكم واقتراحاتكم، وسنقوم بالرد عليكم في أقرب وقت.
-
-            </p>
+        
 
         </div>
 
@@ -63,91 +59,83 @@
                     FORM
             ======================== -->
 
-            <div class="contact-form-card">
+           <div class="contact-form-card">
 
-                {% if messages %}
+    <div class="contact-info">
 
-                    {% for message in messages %}
+        <div class="contact-icon">
 
-                        <div class="alert-success">
+            <i class="fa-solid fa-comments"></i>
 
-                            {{ message }}
+        </div>
 
-                        </div>
+        <h2>
+            يسعدنا التواصل معك
+        </h2>
 
-                    {% endfor %}
+        <p class="contact-text">
+            إذا كان لديك أي استفسار أو اقتراح أو ترغب بالإبلاغ عن مشكلة،
+            يمكنك التواصل معنا مباشرة عبر الوسائل التالية.
+        </p>
 
-                {% endif %}
+        <div class="info-card">
 
-                <form method="POST">
+            <i class="fa-brands fa-whatsapp"></i>
 
-                    {% csrf_token %}
+            <div>
 
-                    <div class="form-group">
+                <span class="info-title">
+                    واتساب
+                </span>
 
-                        <label>
-
-                            الاسم الكامل
-
-                        </label>
-
-                        {{ form.name }}
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>
-
-                            البريد الإلكتروني
-
-                        </label>
-
-                        {{ form.email }}
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>
-
-                            الموضوع
-
-                        </label>
-
-                        {{ form.subject }}
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>
-
-                            الرسالة
-
-                        </label>
-
-                        {{ form.message }}
-
-                    </div>
-
-                    <button
-
-                        type="submit"
-
-                        class="submit-btn"
-
-                    >
-
-                        <i class="fa-solid fa-paper-plane"></i>
-
-                        إرسال الرسالة
-
-                    </button>
-
-                </form>
+                <span class="info-value">
+                    +962 78 765 3122
+                </span>
 
             </div>
+
+        </div>
+
+        <div class="info-card">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <div>
+
+                <span class="info-title">
+                    البريد الإلكتروني
+                </span>
+
+                <span class="info-value">
+                    ihababbas26@gmail.com
+                </span>
+
+            </div>
+
+        </div>
+
+        <a href="https://wa.me/962787653122?text=السلام عليكم، أرغب بالاستفسار عن منصة قلب الحافظ."
+           target="_blank"
+           class="submit-btn whatsapp-btn">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            تواصل عبر واتساب
+
+        </a>
+
+        <a href="mailto:ihababbas26@gmail.com"
+           class="submit-btn email-btn">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            إرسال بريد إلكتروني
+
+        </a>
+
+    </div>
+
+</div>
 
         </div>
 

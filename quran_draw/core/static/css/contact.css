@@ -391,3 +391,171 @@ font-size:16px;
 }
 
 }
+
+/*==================================
+        CONTACT INFO
+==================================*/
+
+.contact-info{
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.contact-icon{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:#0E5C45;
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:38px;
+
+    margin-bottom:25px;
+
+}
+
+.contact-info h2{
+
+    color:#0E5C45;
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.contact-text{
+
+    color:#666;
+
+    line-height:2;
+
+    margin-bottom:35px;
+
+    max-width:450px;
+
+}
+
+.info-card{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px 20px;
+
+    margin-bottom:18px;
+
+    border-radius:14px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    transition:.3s;
+
+}
+
+.info-card:hover{
+
+    border-color:#0E5C45;
+
+    transform:translateY(-3px);
+
+}
+
+.info-card i{
+
+    width:55px;
+
+    height:55px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-size:24px;
+
+    background:#0E5C45;
+
+}
+
+.info-title{
+
+    display:block;
+
+    color:#888;
+
+    font-size:14px;
+
+    margin-bottom:5px;
+
+    text-align:right;
+
+}
+
+.info-value{
+
+    display:block;
+
+    color:#222;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+    text-align:right;
+
+}
+
+.whatsapp-btn{
+
+    margin-top:15px;
+
+    background:#25D366 !important;
+
+}
+
+.whatsapp-btn:hover{
+
+    background:#1fb458 !important;
+
+}
+
+.email-btn{
+
+    margin-top:15px;
+
+}
