@@ -1,4 +1,3 @@
-
 const SURAHS=[
   [1,'الفاتحة'],[2,'البقرة'],[50,'آل عمران'],[77,'النساء'],[106,'المائدة'],
   [128,'الأنعام'],[151,'الأعراف'],[177,'الأنفال'],[187,'التوبة'],[208,'يونس'],
@@ -26,7 +25,7 @@ const JUZ_STARTS=[1,22,42,62,82,102,122,142,162,182,202,222,242,262,282,302,322,
 let currentPage=1;
 
 function norm(s){
-  return s.trim().replace(/[إأآ]/g,'ا').replace(/[ى]/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,'');
+  return s.trim().replace(/[إأآ]/g,'ا').replace(/[ى]/g,'ي').replace(/ة/g,'ه').replace(/\s+/g,'').replace(/^ال/,'');
 }
 
 function getJuz(page){
@@ -67,9 +66,9 @@ function check(){
   let juzInput=document.getElementById('juzInput');
   let surahInput=document.getElementById('surahInput');
   let result=document.getElementById('result');
-  let userJuz=parseInt(juzInput.value);
+  let userJuz=Number(juzInput.value);
   let userSurah=surahInput.value.trim();
-  if(isNaN(userJuz)||userJuz<1||userJuz>30){
+  if(!Number.isInteger(userJuz)||userJuz<1||userJuz>30){
     result.textContent='⚠️ الرجاء إدخال رقم صحيح للجزء (1-30)';
     result.className='result wrong';
     juzInput.focus();

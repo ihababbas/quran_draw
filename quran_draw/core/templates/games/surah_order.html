@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-لعبة ترتيب السور | قلب الحافظ
+ترتيب السور | قلب الحافظ
 {% endblock %}
 
 {% block extra_css %}
@@ -17,117 +17,119 @@
 
     <div class="container">
 
-        <!-- =========================
-                PAGE TITLE
-        ========================== -->
+        <!-- ===============================
+                    PAGE TITLE
+        ================================ -->
 
-        <div class="page-title">
+        <div class="section-title">
 
             <h1>
 
-                لعبة ترتيب السور
+                ترتيب السور
 
             </h1>
 
             <p>
 
-                اسحب السور وأفلتها حتى تصبح مرتبة حسب ترتيبها في المصحف الشريف.
+                اسحب وأفلت السور حتى تصبح مرتبة كما في المصحف الشريف.
 
             </p>
 
         </div>
 
-        <!-- =========================
-                GAME CARD
-        ========================== -->
+        <!-- ===============================
+                    GAME CARD
+        ================================ -->
 
         <div class="game-card">
 
-            <!-- =========================
-                    TOP BAR
-            ========================== -->
+            <!-- ===============================
+                        HEADER
+            ================================ -->
 
             <div class="game-header">
 
-                <div class="game-info">
+                <div>
 
-                    <div class="info-item">
+                    <h2>
 
-                        <span class="label">
+                        لعبة ترتيب السور
 
-                            عدد السور
+                    </h2>
 
-                        </span>
+                    <p>
 
-                        <span id="countDisplay">
+                        اختر عدد السور ثم ابدأ اللعبة.
 
-                            8
-
-                        </span>
-
-                    </div>
+                    </p>
 
                 </div>
 
-                <div class="game-controls">
+            </div>
+
+            <!-- ===============================
+                    CONTROLS
+            ================================ -->
+
+            <div class="game-controls">
+
+                <div class="slider-group">
+
+                    <label for="countSlider">
+
+                        عدد السور
+
+                    </label>
 
                     <input
-
                         type="range"
-
                         id="countSlider"
-
                         min="4"
-
-                        max="14"
-
+                        max="20"
                         value="8"
-
                     >
 
-                    <button
+                    <span id="countDisplay">
 
-                        id="newGameBtn"
+                        8
 
-                        class="btn btn-primary"
-
-                    >
-
-                        لعبة جديدة
-
-                    </button>
+                    </span>
 
                 </div>
 
-            </div>
+                <button
+                    id="newGameBtn"
+                    class="btn btn-primary"
+                >
 
-            <!-- =========================
-                    GAME AREA
-            ========================== -->
+                    <i class="fa-solid fa-rotate"></i>
 
-            <div
+                    لعبة جديدة
 
-                id="cardsContainer"
-
-                class="cards-container"
-
-            >
+                </button>
 
             </div>
 
-            <!-- =========================
+            <!-- ===============================
+                    CARDS
+            ================================ -->
+
+            <div id="cardsContainer">
+
+            </div>
+
+                        <!-- ===============================
                     ACTIONS
-            ========================== -->
+            ================================ -->
 
             <div class="game-actions">
 
                 <button
-
                     id="checkBtn"
-
-                    class="btn btn-gold"
-
+                    class="btn btn-check"
                 >
+
+                    <i class="fa-solid fa-circle-check"></i>
 
                     تحقق من الترتيب
 
@@ -135,26 +137,24 @@
 
             </div>
 
-            <!-- =========================
+            <!-- ===============================
                     RESULT
-            ========================== -->
+            ================================ -->
 
             <div
-
                 id="result"
-
                 class="game-result"
-
             >
 
             </div>
 
+            <!-- ===============================
+                    SCORE
+            ================================ -->
+
             <div
-
                 id="score"
-
                 class="game-score"
-
             >
 
             </div>
