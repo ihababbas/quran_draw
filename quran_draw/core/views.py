@@ -144,3 +144,7 @@ def contact(request):
 
 def surah_ayah_game(request):
     return render(request, "games/surah_ayahs.html")
+
+
+def about(request):
+    return render(request, "about.html")

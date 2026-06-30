@@ -1,0 +1,441 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+من نحن | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="about-page">
+
+    <div class="container">
+
+        <!-- ========================= -->
+        <!-- Hero Section -->
+        <!-- ========================= -->
+
+        <div class="about-hero">
+
+            <div class="about-content">
+
+                <span class="section-badge">
+
+                    من نحن
+
+                </span>
+
+                <h1>
+
+                    منصة <span>قلب الحافظ</span>
+
+                </h1>
+
+                <p>
+
+                    منصة تعليمية تفاعلية تهدف إلى خدمة القرآن الكريم من خلال
+                    توفير أدوات واختبارات وألعاب تعليمية تساعد على مراجعة الحفظ
+                    بطريقة حديثة وممتعة، تناسب جميع الفئات العمرية.
+
+                </p>
+
+                <div class="about-buttons">
+
+                    <a href="{% url 'home' %}" class="btn-primary">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        الصفحة الرئيسية
+
+                    </a>
+
+<!-- 
+                        <i class="fa-solid fa-gamepad"></i>
+
+                        استكشف الألعاب -->
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="about-image">
+
+                <img
+
+                    src="{% static 'images/about-banner.jpg' %}"
+
+                    alt="منصة قلب الحافظ"
+
+                >
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Vision -->
+        <!-- ========================= -->
+
+        <div class="about-section">
+
+            <div class="section-heading">
+
+                <h2>
+
+                    رسالتنا
+
+                </h2>
+
+                <p>
+
+                    نسعى إلى جعل مراجعة القرآن الكريم أكثر سهولة ومتعة باستخدام
+                    التقنيات الحديثة والألعاب التعليمية.
+
+                </p>
+
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-book-quran"></i>
+
+                    </div>
+
+                    <h3>
+
+                        خدمة القرآن الكريم
+
+                    </h3>
+
+                    <p>
+
+                        تصميم أدوات تعليمية تساعد الحفاظ على المراجعة اليومية
+                        وترسيخ الحفظ.
+
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+                    </div>
+
+                    <h3>
+
+                        التعلم باللعب
+
+                    </h3>
+
+                    <p>
+
+                        تحويل المراجعة إلى تجربة ممتعة من خلال ألعاب واختبارات
+                        تفاعلية.
+
+                    </p>
+
+                </div>
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+                    <h3>
+
+                        لجميع الفئات
+
+                    </h3>
+
+                    <p>
+
+                        مناسبة للطلاب والمعلمين والحفاظ الراغبين في مراجعة
+                        القرآن الكريم.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+                <!-- ========================= -->
+        <!-- What We Offer -->
+        <!-- ========================= -->
+
+        <div class="about-section">
+
+            <div class="section-heading">
+
+                <h2>
+
+                    ماذا نقدم؟
+
+                </h2>
+
+                <p>
+
+                    مجموعة من الأدوات التعليمية التي تساعد على تثبيت الحفظ
+                    واختبار المعلومات بطريقة سهلة وحديثة.
+
+                </p>
+
+            </div>
+
+            <div class="services-grid">
+
+                <div class="service-card">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <h3>
+
+                        اختبارات السحب
+
+                    </h3>
+
+                    <p>
+
+                        إنشاء اختبارات عشوائية للأجزاء والسور لتسهيل مراجعة
+                        المحفوظ.
+
+                    </p>
+
+                </div>
+
+                <div class="service-card">
+
+                    <i class="fa-solid fa-puzzle-piece"></i>
+
+                    <h3>
+
+                        ألعاب تعليمية
+
+                    </h3>
+
+                    <p>
+
+                        ألعاب تفاعلية تساعد على ترسيخ المعلومات بأسلوب ممتع
+                        ومحفز.
+
+                    </p>
+
+                </div>
+
+                <div class="service-card">
+
+                    <i class="fa-solid fa-ranking-star"></i>
+
+                    <h3>
+
+                        تقييم المستوى
+
+                    </h3>
+
+                    <p>
+
+                        اختبر مستواك بشكل مستمر وتعرف على نقاط القوة والجوانب
+                        التي تحتاج إلى مراجعة.
+
+                    </p>
+
+                </div>
+
+                <div class="service-card">
+
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+
+                    <h3>
+
+                        يعمل على جميع الأجهزة
+
+                    </h3>
+
+                    <p>
+
+                        استمتع باستخدام المنصة من الهاتف أو الجهاز اللوحي أو
+                        الكمبيوتر.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Vision -->
+        <!-- ========================= -->
+
+        <div class="about-section">
+
+            <div class="section-heading">
+
+                <h2>
+
+                    رؤيتنا
+
+                </h2>
+
+            </div>
+
+            <div class="vision-card">
+
+                <p>
+
+                    أن تكون منصة <strong>قلب الحافظ</strong> من أبرز المنصات
+                    العربية المتخصصة في خدمة القرآن الكريم، من خلال تقديم أدوات
+                    رقمية مبتكرة تساعد على الحفظ والمراجعة وترفع من جودة التعلم
+                    لدى الطلاب والمعلمين والحفاظ.
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Goals -->
+        <!-- ========================= -->
+
+        <div class="about-section">
+
+            <div class="section-heading">
+
+                <h2>
+
+                    أهداف المنصة
+
+                </h2>
+
+            </div>
+
+            <div class="goals-grid">
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    تعزيز حفظ القرآن الكريم.
+
+                </div>
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    تسهيل المراجعة اليومية.
+
+                </div>
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    توفير أدوات مجانية ومفيدة.
+
+                </div>
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    تشجيع التعلم التفاعلي.
+
+                </div>
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    دعم المعلمين والحفاظ.
+
+                </div>
+
+                <div class="goal-item">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    تطوير ألعاب تعليمية مبتكرة.
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Quote -->
+        <!-- ========================= -->
+
+        <div class="quote-card">
+
+            <i class="fa-solid fa-quote-right"></i>
+
+            <blockquote>
+
+                قال رسول الله ﷺ
+
+            </blockquote>
+
+            <h3>
+
+                "خيركم من تعلم القرآن وعلمه"
+
+            </h3>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- CTA -->
+        <!-- ========================= -->
+
+        <div class="cta-section">
+
+            <h2>
+
+                ابدأ رحلتك مع القرآن الكريم اليوم
+
+            </h2>
+
+            <p>
+
+                استمتع بمجموعة من الاختبارات والألعاب التعليمية التي تساعدك
+                على مراجعة القرآن الكريم بطريقة ممتعة وتفاعلية.
+
+            </p>
+
+            <a href="{% url 'home' %}" class="btn-primary">
+
+                <i class="fa-solid fa-book-open"></i>
+
+                ابدأ الآن
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
