@@ -140,36 +140,7 @@ def surah_order_game(request):
 
 def contact(request):
     return render(request, "contact.html")
-    form = ContactForm()
 
-    if request.method == "POST":
 
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-
-            name = form.cleaned_data["name"]
-            email = form.cleaned_data["email"]
-            subject = form.cleaned_data["subject"]
-            message = form.cleaned_data["message"]
-
-            messages.success(
-                request,
-                "تم إرسال رسالتك بنجاح."
-            )
-
-            return redirect("contact")
-
-    return render(
-
-        request,
-
-        "contact.html",
-
-        {
-
-            "form":form
-
-        }
-
-    )
+def surah_ayah_game(request):
+    return render(request, "games/surah_ayahs.html")

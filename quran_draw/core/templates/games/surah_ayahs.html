@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+عدد آيات السور | قلب الحافظ
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/surah_ayahs.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="surah-ayahs-page">
+
+    <div class="container">
+
+        <!-- ============================= -->
+        <!-- Page Title -->
+        <!-- ============================= -->
+
+        <div class="section-title">
+
+            <h1>
+
+                عدد آيات السور
+
+            </h1>
+
+            <p>
+
+                اختبر معلوماتك في عدد آيات سور القرآن الكريم بطريقة تفاعلية وممتعة.
+
+            </p>
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Game Card -->
+        <!-- ============================= -->
+
+        <div class="game-card">
+
+            <!-- ============================= -->
+            <!-- Header -->
+            <!-- ============================= -->
+
+            <div class="game-header">
+
+                <div>
+
+                    <h2>
+
+                        لعبة عدد آيات السور
+
+                    </h2>
+
+                    <p>
+
+                        اختر العدد الصحيح لآيات السورة الظاهرة أمامك.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Progress -->
+            <!-- ============================= -->
+
+            <div class="game-progress">
+
+                <div
+                    id="questionCounter"
+                    class="question-counter">
+
+                    السؤال 1 من 10
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Question -->
+            <!-- ============================= -->
+
+            <div class="question-card">
+
+                <span class="question-label">
+
+                    اسم السورة
+
+                </span>
+
+                <h2 id="surahName">
+
+                    الفاتحة
+
+                </h2>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Options -->
+            <!-- ============================= -->
+
+            <div
+                id="optionsContainer"
+                class="options-grid">
+
+            </div>
+
+                <!-- ============================= -->
+            <!-- Feedback -->
+            <!-- ============================= -->
+
+            <div
+                id="feedback"
+                class="game-feedback">
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Actions -->
+            <!-- ============================= -->
+
+            <div class="game-actions">
+
+                <button
+                    id="nextBtn"
+                    class="btn btn-next">
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    السؤال التالي
+
+                </button>
+
+            </div>
+
+            <!-- ============================= -->
+            <!-- Result -->
+            <!-- ============================= -->
+
+            <div
+                id="result"
+                class="game-result hidden">
+
+                <div class="result-icon">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                </div>
+
+                <h2>
+
+                    انتهت اللعبة
+
+                </h2>
+
+                <div
+                    id="finalScore"
+                    class="final-score">
+
+                    0 / 10
+
+                </div>
+
+                <p
+                    id="scoreDetail"
+                    class="score-message">
+
+                </p>
+
+                <button
+                    id="restartBtn"
+                    class="btn btn-primary">
+
+                    <i class="fa-solid fa-rotate-right"></i>
+
+                    لعبة جديدة
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/surah_ayahs.js' %}"></script>
+
+{% endblock %}
