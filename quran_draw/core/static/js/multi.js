@@ -532,72 +532,90 @@ function printResult(){
                 DOWNLOAD PDF
 ==================================================*/
 
-function downloadPDF(){
 
-    if(lastResult === null){
-
+function downloadPDF() {
+    if (lastResult === null) {
         Swal.fire({
-
-            icon:"warning",
-
-            title:"تنبيه",
-
-            text:"قم بإجراء السحب أولاً."
-
+            icon: "warning",
+            title: "تنبيه",
+            text: "قم بإجراء السحب أولاً."
         });
-
         return;
-
     }
 
     const printable = document.getElementById("printable");
 
+    // تصغير الخط فقط عند اختيار المستوى 30
+    const originalStyles = [];
+
+    if (Number(selectedLevel) === 30) {
+        printable.querySelectorAll(".exam-table th, .exam-table td").forEach(cell => {
+            originalStyles.push({
+                element: cell,
+                fontSize: cell.style.fontSize,
+                padding: cell.style.padding,
+                lineHeight: cell.style.lineHeight
+            });
+
+            cell.style.fontSize = "12px";
+            cell.style.padding = "2px 4px";
+            cell.style.lineHeight = "2";
+        });
+
+        printable.querySelectorAll(".print-header h1").forEach(el => {
+            originalStyles.push({
+                element: el,
+                fontSize: el.style.fontSize
+            });
+            el.style.fontSize = "18px";
+        });
+    }
+
     const options = {
+        margin: 0,
+        filename: `Multi_Exam_${selectedLevel}.pdf`,
 
-        margin:0,
-
-        filename:`Multi_Exam_${selectedLevel}.pdf`,
-
-        image:{
-
-            type:"jpeg",
-
-            quality:1
-
+        image: {
+            type: "jpeg",
+            quality: 1
         },
 
-        html2canvas:{
-
-            scale:3,
-
-            useCORS:true,
-
-            scrollX:0,
-
-            scrollY:0
-
+        html2canvas: {
+            scale: 3,
+            useCORS: true,
+            scrollX: 0,
+            scrollY: 0
         },
 
-        jsPDF:{
-
-            unit:"mm",
-
-            format:"a4",
-
-            orientation:"portrait"
-
+        jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
         }
-
     };
 
     html2pdf()
-
         .set(options)
-
         .from(printable)
+        .save()
+        .then(() => {
+            restoreStyles();
+        })
+        .catch(error => {
+            restoreStyles();
+            console.error("PDF export error:", error);
+        });
 
-        .save();
+    function restoreStyles() {
+        originalStyles.forEach(item => {
+            item.element.style.fontSize = item.fontSize;
 
+            if (item.padding !== undefined) {
+                item.element.style.padding = item.padding;
+                item.element.style.lineHeight = item.lineHeight;
+            }
+        });
+    }
 }
 
 /*==================================================
