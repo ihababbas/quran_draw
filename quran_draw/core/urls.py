@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import main_home, multi_page, single_page, draw, draw_single , memory_game , page_game , surah_order_game , contact , surah_ayah_game , about
-
+from .views import main_home, multi_page, single_page, draw, draw_single , memory_game , page_game , surah_order_game , contact , surah_ayah_game , about ,surah_guess
 
 urlpatterns = [
     path('', main_home, name='home'),
@@ -15,4 +14,9 @@ urlpatterns = [
     path("about/", about, name="about"),   
     path("contact/", contact, name="contact"),
     path("games/surah-ayahs/", surah_ayah_game, name="surah_ayahs"),
+    path(
+    "surah-guess/",
+    surah_guess,
+    name="surah_guess",
+),
 ]

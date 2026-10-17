@@ -1,0 +1,547 @@
+
+/* ========================================
+   صفحة لعبة تخمين أسماء السور
+   ======================================== */
+
+.surah-guess-page {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 70vh;
+    margin: 0 auto;
+    padding: 32px 16px 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    font-family: "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
+    color: #1F2937;
+    background: #F8F5EF;
+}
+
+/* توحيد حساب الأحجام داخل اللعبة */
+.surah-guess-page *,
+.surah-guess-page *::before,
+.surah-guess-page *::after {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* البطاقة الرئيسية للعبة */
+.surah-guess-page .card {
+    display: block;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+
+    background: #FFFFFF;
+    border: 1px solid #E8EFEA;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(31, 41, 55, 0.12);
+
+    padding: 28px 26px;
+}
+
+/* عنوان اللعبة */
+.surah-guess-page h1 {
+    text-align: center;
+    margin: 0 0 6px;
+    font-size: 24px;
+    line-height: 1.7;
+    color: #0E5C45;
+}
+
+/* الوصف */
+.surah-guess-page .sub {
+    text-align: center;
+    color: #64748B;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 22px;
+}
+
+/* شريط المعلومات */
+.surah-guess-page .bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 14px;
+    color: #0E5C45;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.surah-guess-page .bar .turn {
+    color: #0E5C45;
+    background: #EAF3EE;
+    padding: 4px 12px;
+    border-radius: 99px;
+}
+
+/* شريط التقدم */
+.surah-guess-page .progress {
+    height: 8px;
+    background: #E8EFEA;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.surah-guess-page .progress > div {
+    height: 100%;
+    width: 0;
+    background: #0E5C45;
+    transition: width 0.3s ease;
+}
+
+/* مقطع الآية */
+.surah-guess-page .ayah {
+    background: #F8F5EF;
+    border: 2px dashed #A9CDBB;
+    border-radius: 14px;
+
+    padding: 24px 18px;
+    text-align: center;
+    font-size: 26px;
+    line-height: 2;
+    color: #0E5C45;
+
+    min-height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 22px;
+    overflow-wrap: anywhere;
+}
+
+/* العناوين والحقول */
+.surah-guess-page label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #0E5C45;
+}
+
+.surah-guess-page input[type="text"] {
+    display: block;
+    width: 100%;
+    min-width: 0;
+
+    padding: 13px 14px;
+    font-size: 18px;
+
+    border: 2px solid #D5E2DA;
+    border-radius: 12px;
+    outline: none;
+
+    text-align: right;
+    background: #FFFFFF;
+    color: #1F2937;
+
+    transition: border-color 0.2s ease;
+}
+
+.surah-guess-page input[type="text"]:focus {
+    border-color: #0E5C45;
+}
+
+/* الأزرار */
+.surah-guess-page button {
+    margin-top: 14px;
+    width: 100%;
+    padding: 13px;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #FFFFFF;
+    background: #0E5C45;
+
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.surah-guess-page button:hover {
+    background: #094633;
+}
+
+.surah-guess-page button:active {
+    transform: scale(0.99);
+}
+
+.surah-guess-page button:disabled {
+    background: #9DB8AC;
+    cursor: not-allowed;
+}
+
+.surah-guess-page button.ghost {
+    background: #E8EFEA;
+    color: #0E5C45;
+}
+
+.surah-guess-page button.ghost:hover {
+    background: #D8E5DD;
+}
+
+/* رسائل الإجابة */
+.surah-guess-page .feedback {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+
+    display: none;
+    line-height: 1.7;
+}
+
+.surah-guess-page .feedback.ok {
+    background: #DCFCE7;
+    color: #166534;
+    display: block;
+}
+
+.surah-guess-page .feedback.no {
+    background: #FEE2E2;
+    color: #991B1B;
+    display: block;
+}
+
+/* إخفاء العناصر */
+.surah-guess-page .hidden {
+    display: none !important;
+}
+
+/* النتائج */
+.surah-guess-page .result {
+    text-align: center;
+}
+
+.surah-guess-page .score {
+    font-size: 52px;
+    font-weight: 800;
+    color: #0E5C45;
+    margin: 8px 0;
+}
+
+.surah-guess-page .result p {
+    color: #64748B;
+}
+
+.surah-guess-page .center {
+    text-align: center;
+}
+
+/* ========================================
+   اختيار أجزاء القرآن
+   ======================================== */
+
+.surah-guess-page .juz-wrap {
+    border: 1px solid #D9E6DF;
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 18px;
+    background: #FFFFFF;
+}
+
+.surah-guess-page .juz-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.surah-guess-page .juz-head span {
+    font-weight: 600;
+    color: #0E5C45;
+    font-size: 14px;
+}
+
+.surah-guess-page .mini {
+    width: auto;
+    margin: 0;
+    padding: 5px 12px;
+    font-size: 13px;
+
+    background: #E8EFEA;
+    color: #0E5C45;
+    border-radius: 8px;
+}
+
+.surah-guess-page .mini:hover {
+    background: #D8E5DD;
+}
+
+/* شبكة الأجزاء */
+.surah-guess-page .juz-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+}
+
+/* اختيار عدد اللاعبين */
+.surah-guess-page .players-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+/* أزرار الأجزاء */
+.surah-guess-page .chip {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 9px 0;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    background: #FFFFFF;
+    color: #0E5C45;
+    border: 2px solid #D5E2DA;
+    border-radius: 9px;
+}
+
+.surah-guess-page .chip:hover {
+    background: #EEF6F1;
+}
+
+.surah-guess-page .chip.on {
+    background: #0E5C45;
+    color: #FFFFFF;
+    border-color: #0E5C45;
+}
+
+/* التلميحات وحالة التحميل */
+.surah-guess-page .hint {
+    font-size: 12px;
+    color: #64748B;
+    margin: 10px 0 0;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.surah-guess-page .status {
+    font-size: 13px;
+    margin: 10px 0 0;
+    text-align: center;
+    min-height: 18px;
+    color: #166534;
+}
+
+.surah-guess-page .status.err {
+    color: #991B1B;
+}
+
+/* أسماء اللاعبين */
+.surah-guess-page .names-box {
+    margin-top: 12px;
+}
+
+.surah-guess-page .names-box label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.surah-guess-page .names-box input {
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   قائمة ترتيب النتائج
+   ======================================== */
+
+.surah-guess-page .rank-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.surah-guess-page .rank-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    background: #F8F5EF;
+    border: 2px solid #D5E2DA;
+    border-radius: 12px;
+
+    padding: 12px 16px;
+    margin-bottom: 10px;
+
+    font-size: 17px;
+    font-weight: 600;
+    color: #0E5C45;
+}
+
+.surah-guess-page .rank-list li.win {
+    background: #DCFCE7;
+    border-color: #86D3A1;
+}
+
+.surah-guess-page .rank-list li .medal {
+    font-size: 20px;
+}
+
+/* ========================================
+   الشاشات المتوسطة
+   ======================================== */
+
+@media (max-width: 768px) {
+    .surah-guess-page {
+        min-height: 70vh;
+        padding: 22px 12px 32px;
+    }
+
+    .surah-guess-page .card {
+        max-width: 100%;
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .surah-guess-page h1 {
+        font-size: 22px;
+    }
+
+    .surah-guess-page .ayah {
+        font-size: 23px;
+        padding: 20px 14px;
+    }
+
+    .surah-guess-page .juz-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 7px;
+    }
+}
+
+/* ========================================
+   الهواتف الصغيرة
+   ======================================== */
+
+@media (max-width: 480px) {
+    .surah-guess-page {
+        padding: 16px 8px 24px;
+    }
+
+    .surah-guess-page .card {
+        padding: 18px 12px;
+        border-radius: 14px;
+    }
+
+    .surah-guess-page h1 {
+        font-size: 20px;
+    }
+
+    .surah-guess-page .sub {
+        font-size: 13px;
+    }
+
+    .surah-guess-page .ayah {
+        font-size: 21px;
+        line-height: 1.9;
+        padding: 18px 10px;
+    }
+
+    .surah-guess-page .juz-wrap {
+        padding: 10px;
+    }
+
+    .surah-guess-page .juz-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .surah-guess-page .chip {
+        padding: 9px 0;
+        font-size: 13px;
+    }
+
+    .surah-guess-page .players-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .surah-guess-page .score {
+        font-size: 42px;
+    }
+
+    .surah-guess-page .rank-list li {
+        padding: 10px;
+        font-size: 15px;
+    }
+}
+
+
+/* فرض توسيط بطاقة اللعبة */
+.surah-guess-page {
+    display: block !important;
+    width: 100% !important;
+    padding: 28px 16px !important;
+    margin: 0 !important;
+}
+
+.surah-guess-page .card {
+    float: none !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+
+    display: block !important;
+    width: 100% !important;
+    max-width: 680px !important;
+
+    margin: 0 auto !important;
+}
+
+/* منع الحاويات الداخلية من دفع اللعبة إلى اليمين */
+.surah-guess-page .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .surah-guess-page {
+        padding: 18px 12px !important;
+    }
+
+    .surah-guess-page .card {
+        max-width: 100% !important;
+    }
+}
+/* توسيط بطاقة اللعبة داخل مساحة المحتوى */
+section.surah-guess-page {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 32px 16px 48px !important;
+}
+
+section.surah-guess-page > .card {
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    float: none !important;
+    flex: 0 1 680px;
+}
+
+@media (max-width: 768px) {
+    section.surah-guess-page {
+        padding: 20px 12px 32px !important;
+    }
+
+    section.surah-guess-page > .card {
+        max-width: 100% !important;
+    }
+}

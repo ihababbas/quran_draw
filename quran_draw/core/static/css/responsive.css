@@ -593,3 +593,20 @@ order:-1;
     }
 
 }
+
+/* توسيط صفحة لعبة تخمين أسماء السور */
+.surah-guess-page {
+    display: block;
+    width: 100%;
+    min-height: 70vh;
+    padding: 32px 16px;
+    margin: 0;
+}
+
+.surah-guess-page .card {
+    display: block;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    float: none;
+}

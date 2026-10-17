@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -12,23 +13,18 @@
     <div class="container">
 
         <!-- عنوان الصفحة -->
-
         <div class="hero-title">
 
-            <h1>  اختر نوع الاختبار أو اللعبة التي ترغب باستخدامها </h1>
+            <h1>اختر نوع الاختبار أو اللعبة التي ترغب باستخدامها</h1>
 
-            <p>
-                
-            </p>
+            <p></p>
 
         </div>
 
         <!-- البطاقات -->
-
         <div class="services-grid">
 
             <!-- اختبار جزء واحد -->
-
             <a href="/single/" class="service-card">
 
                 <div class="card-icon">
@@ -48,7 +44,6 @@
             </a>
 
             <!-- اختبار الأجزاء -->
-
             <a href="/multi/" class="service-card">
 
                 <div class="card-icon">
@@ -66,35 +61,27 @@
                 </span>
 
             </a>
-           <a href="/games/memory/" class="service-card">
 
-    <div class="card-icon">
-        🤔
-        <i class="fa-solid fa-brain"></i>
+            <!-- لعبة الذاكرة -->
+            <a href="/games/memory/" class="service-card">
 
-    </div>
+                <div class="card-icon">
+                    🧠
+                </div>
 
-    <h3>
+                <h3>لعبة الذاكرة</h3>
 
-        لعبة الذاكرة
+                <p>
+                    طابق أسماء سور القرآن الكريم بأقل عدد من المحاولات وفي أسرع وقت.
+                </p>
 
-    </h3>
+                <span class="card-btn">
+                    ابدأ اللعب
+                </span>
 
-    <p>
+            </a>
 
-        طابق أسماء سور القرآن الكريم بأقل عدد من المحاولات وفي أسرع وقت.
-
-    </p>
-
-    <span class="card-btn">
-
-        ابدأ اللعب
-
-    </span>
-
-</a>
             <!-- لعبة ترتيب السور -->
-
             <a href="/games/surah-order/" class="service-card">
 
                 <div class="card-icon">
@@ -108,47 +95,69 @@
                 </p>
 
                 <span class="card-btn">
-                    اسحب السور وأفلتها حتى تصبح مرتبة حسب ترتيبها في المصحف الشريف.
+                    ابدأ اللعب
                 </span>
 
             </a>
 
-            <!-- لعبة ترتيب الآيات -->
-
+            <!-- لعبة رقم الصفحة -->
             <a href="/games/pagenumber/" class="service-card">
 
                 <div class="card-icon">
                     📖
                 </div>
 
-                <h3>لعبة رقم الصفحة </h3>
+                <h3>لعبة رقم الصفحة</h3>
 
                 <p>
                     تدريب تفاعلي لتثبيت الحفظ ومراجعة الصفحات.
                 </p>
 
                 <span class="card-btn">
-                    يتم عرض رقم الصفحة وعليك معرفة الجزء والسورة التي تبدأ فيها هذه الصفحة.
+                    ابدأ اللعب
                 </span>
 
             </a>
+
+            <!-- لعبة عدد الآيات -->
             <a href="/games/surah-ayahs/" class="service-card">
 
                 <div class="card-icon">
                     #️⃣
                 </div>
 
-                <h3>لعبة عدد الآيات </h3>
+                <h3>لعبة عدد الآيات</h3>
 
                 <p>
                     تدريب تفاعلي لتثبيت الحفظ ومراجعة عدد آيات السور.
                 </p>
 
                 <span class="card-btn">
-                    يتم عرض السورة وعليك معرفة عدد آياتها.
+                    ابدأ اللعب
                 </span>
 
             </a>
+
+            <!-- لعبة تخمين أسماء السور -->
+            <a href="{% url 'surah_guess' %}" class="service-card">
+
+                <div class="card-icon">
+                    📝
+                </div>
+
+                <h3>تخمين أسماء السور</h3>
+
+                <p>
+                    اقرأ المقطع القرآني، وخمّن اسم السورة.
+                    تحدَّ نفسك أو نافس صديقك في اختبار الحفظ.
+                </p>
+
+                <span class="card-btn">
+                    ابدأ اللعبة
+                </span>
+
+            </a>
+
         </div>
 
     </div>
@@ -156,3 +165,4 @@
 </section>
 
 {% endblock %}
+```

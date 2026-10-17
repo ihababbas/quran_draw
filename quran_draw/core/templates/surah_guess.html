@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}لعبة تخمين أسماء السور | قلب الحافظ{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/surah_guess.css' %}">
+{% endblock %}
+<div class="surah-guess-page" dir="rtl">
+    <div class="card">
+{% block content %}
+<section class="surah-guess-page"><div class="card">
+    <!-- Start screen -->
+    <div id="start">
+      <h1>لعبة تخمين أسماء السور</h1>
+      <p class="sub">يظهر لك مقطع من آية، اكتب اسم السورة الصحيح. في وضع اللاعبين يتناوبون على الأسئلة (٥ أسئلة لكل لاعب).</p>
+
+      <div class="juz-wrap">
+        <div class="juz-head"><span>عدد اللاعبين:</span></div>
+        <div class="players-row" id="playersRow">
+          <button type="button" class="chip on" data-players="1">لاعب واحد</button>
+          <button type="button" class="chip" data-players="2">لاعبان</button>
+        </div>
+        <div class="names-box hidden" id="namesBox">
+          <label for="name1">اسم اللاعب ١:</label>
+          <input id="name1" type="text" maxlength="20" placeholder="اللاعب ١" autocomplete="off" />
+          <label for="name2">اسم اللاعب ٢:</label>
+          <input id="name2" type="text" maxlength="20" placeholder="اللاعب ٢" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="juz-wrap">
+        <div class="juz-head">
+          <span>اختر الأجزاء (يمكن اختيار أكثر من جزء):</span>
+          <span>
+            <button type="button" class="mini" id="allJuz">الكل</button>
+            <button type="button" class="mini" id="clearJuz">مسح</button>
+          </span>
+        </div>
+        <div class="juz-grid" id="juzGrid"></div>
+        <p class="hint">اتركها فارغة للعب من المجموعة الجاهزة بدون إنترنت.</p>
+      </div>
+
+      <button id="startBtn">ابدأ اللعبة</button>
+      <p class="status" id="status"></p>
+    </div>
+
+    <!-- Game screen -->
+    <div id="game" class="hidden">
+      <div class="bar">
+        <span class="turn" id="turnInfo">دور: —</span>
+        <span id="counter">السؤال ١ من ٥</span>
+      </div>
+      <div class="bar">
+        <span id="scoreNow">النقاط: ٠</span>
+      </div>
+      <div class="progress"><div id="bar"></div></div>
+      <div class="ayah" id="ayah"></div>
+      <label for="answer">اكتب اسم السورة:</label>
+      <input id="answer" type="text" autocomplete="off" placeholder="مثال: الفاتحة" />
+      <button id="checkBtn">تحقق</button>
+      <div class="feedback" id="feedback"></div>
+      <button id="nextBtn" class="hidden">التالي</button>
+    </div>
+
+    <!-- Result screen -->
+    <div id="result" class="hidden result">
+      <h1>انتهى الاختبار</h1>
+      <div class="score" id="finalScore">٠ / ٥</div>
+      <p id="finalMsg"></p>
+      <ul class="rank-list" id="rankList"></ul>
+      <button id="againBtn" class="ghost">العب مرة أخرى</button>
+      <button id="homeBtn" class="ghost">العودة للشاشة الرئيسية</button>
+    </div>
+  </div>
+</section>
+  </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/surah_guess.js' %}"></script>
+{% endblock %}

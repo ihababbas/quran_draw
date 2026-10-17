@@ -148,3 +148,6 @@ def surah_ayah_game(request):
 
 def about(request):
     return render(request, "about.html")
+
+def surah_guess(request):
+    return render(request, "surah_guess.html")
